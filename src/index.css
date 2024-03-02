@@ -1,3 +1,12 @@
+/* Define styles for body and code elements */
+
+/* Alasyam Sadwika - 1002070116
+Bollarapu Sai Teja - 1002186820
+Annamdevula Sri Nikitha - 1002163896
+Atthipatla Jagadeesh - 1002162166
+Aligina Mohana krishna -1002168491 */
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +20,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Define styles for the container of the forms */
+.form-container {
+  margin-top: 100px;
+}
+.link-no-underline {
+  text-decoration: none;
+}
+/* Define styles for the contact button */
+.contact-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Define styles for the forms */
+.form {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Define styles for form fields */
+.form-field {
+  margin-bottom: 20px;
+}
+
+/* Define styles for form buttons */
+.form-button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Define styles for form links */
+.form-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Define styles for form links on hover */
+.form-link:hover {
+  text-decoration: underline;
+}
+
+
+/* .paper {
+  padding: theme.spacing(2),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}, */
