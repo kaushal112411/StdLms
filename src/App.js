@@ -10,6 +10,7 @@ import Student from './components/Student';
 import Proffesor from './components/Proffesor';
 import Aboutus from './components/Aboutus';
 import Home from './components/Home';
+import Services from './components/Services';
 const theme = createTheme();
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
   const [login,setLogin] = useState(false)
   const [home,setHome] = useState(true)
   const [proflogin,setProflogin] = useState(false)
-  const [showhome,setShowHome] = useState(false)
+  const [showservice,setShowservice] = useState(false)
   const handleContactButtonClick = () => {
     if(login){
       setLogin(false)
@@ -28,7 +29,12 @@ const App = () => {
         handleAboutusClick()
       }
       else{
+        if(showservice){
+          handleserviceclick()
+        }
+        else{
         setShowContactForm((prev) => !prev);
+        }
       }
     }
   };
@@ -43,11 +49,23 @@ const App = () => {
     }
   };
 
+  const handleserviceclick = ()=>{
+    if(login){
+      setLogin(false)
+    }
+    else{
+    setShowservice((prev) => !prev);
+    }
+  }
+
   const handleHomeclick =()=>{
     // if(login){
     //   setLogin(false)
     //
     setLogin(false)
+    setShowContactForm(false)
+    setShowAboutus(false)
+    setShowservice(false)
     setHome((prev) => !prev);
   }
 
@@ -69,7 +87,7 @@ const App = () => {
                Home
              </Button>
           }
-          { !login && !showAboutus && !showContactForm &&
+          { !login && !showAboutus && !showContactForm && !showservice &&
          <>
         <Button
             variant="contained"
@@ -92,16 +110,21 @@ const App = () => {
             //sx={{ margin: '10px' }}
             className="contact-button"
           >
-            {showContactForm||showAboutus ? 'Back to Login' : login ?'Logout': 'Contact Us'}
+            {showContactForm||showAboutus||showservice ? 'Back to Login' : login ?'Logout': 'Contact Us'}
           </Button>
         </Grid>
       </Grid>
       {!login &&
       <div className="form-container">
-      {showContactForm && !login ? <ContactForm /> : showAboutus && !login ? <Aboutus /> : !login && <AuthForm login={login} setLogin={setLogin} setProflogin={setProflogin}/>}
+      {showContactForm && !login ? <ContactForm /> : showAboutus && !login ? <Aboutus /> :  showservice && !login ? <Services/>: !login && <AuthForm login={login} setLogin={setLogin} setProflogin={setProflogin}/>}
       </div>
       }
-       
+       {/* {
+        !login && 
+        <div className="form-container" >
+         {}
+        </div>
+       } */}
       <div>
         {login && proflogin? <Proffesor/>: login && <Student/> }
       </div>
@@ -111,12 +134,15 @@ const App = () => {
       </>
        :
       <div>
-      <Home setHome={setHome} 
+      <Home 
+      setHome={setHome} 
       setShowAboutus={setShowAboutus}
       setShowContactForm={setShowContactForm}
       handleAboutusClick={handleAboutusClick}
       handleContactButtonClick ={handleContactButtonClick}
+      handleserviceclick = {handleserviceclick}
       setLogin={setLogin}
+      setShowservice={setShowservice}
       />
     </div>
 }

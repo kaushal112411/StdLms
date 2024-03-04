@@ -16,13 +16,13 @@ import image2 from "../image2.png"
 
 const Home = (props) => {
   return (
-    <div className="container" style={{margin:"4%",marginTop:"1%"}}>
-      <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+    <div className="container" style={{margin:"1%",marginTop:"1%",}}>
+      <AppBar position="static" sx={{ backgroundColor: "#3f51b5",height:90,borderRadius:"15px" }}>
+        <Toolbar sx={{ justifyContent: "space-between" , height:"100%" }}>
           <img
             src={image}
             alt="Computer Science Program"
-            style={{ width: "auto", height: "40px", marginRight: "10px" }}
+            style={{ width: "auto", height: "60px", marginRight: "10px" }}
           />
           {/* <Typography variant="h6" component="div">
             Home
@@ -75,7 +75,7 @@ const Home = (props) => {
           width: "100%",
           backgroundColor: "#3f51b5",
           marginTop:"10%",
-          
+          borderRadius:"15px"
         }}
       >
         <BottomNavigationAction label="About Us" style={{color:"white"}} icon={<InfoIcon  onClick={()=>{
@@ -83,7 +83,14 @@ const Home = (props) => {
             props.setHome(false)
         }
             } />}  />
-        <BottomNavigationAction label="Service Page" style={{color:"white"}} icon={<HomeRepairServiceIcon />} />
+        <BottomNavigationAction label="Service Page" style={{color:"white"}} 
+        icon={<HomeRepairServiceIcon 
+            onClick={()=>{
+                props.handleserviceclick()
+                props.setHome(false)
+
+            }}
+        />} />
         <BottomNavigationAction label="Contact Us" style={{color:"white"}} icon={<ContactMailIcon  
         onClick={()=>{
             props.handleContactButtonClick()
