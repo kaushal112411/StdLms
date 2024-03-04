@@ -155,17 +155,15 @@ const Student = () => {
 
   return (
     <div>
-      <Container maxWidth="xlg" style={{ padding: "20px" }}>
+      <Container maxWidth="xlg" style={{ padding: "20px"}}>
+      <Box display="flex" alignItems="center" mb={2}>
         <Paper
           elevation={3}
           sx={{
             p: 2,
-            mb: 4,
-            width: "15%",
-            position: "absolute",
-            top: 10,
-            left: 5,
-            marginLeft: "14px",
+            mb: 1,
+            width: "35%",
+            marginLeft: "0.3%",
             backgroundColor: "#ffffff",
             backgroundImage: "linear-gradient(315deg, #ffffff 0%, #335c81 74%)",
           }}
@@ -194,9 +192,10 @@ const Student = () => {
             Department: Computer Science
           </Typography>
         </Paper>
-        <Grid container spacing={3}>
+        </Box>
+        <Grid container spacing={2}>
           {/* Progress Tracking */}
-          <Grid item xs={12} sm={3} style={{ marginBottom: "1%" }}>
+          <Grid item xs={12} sm={4} style={{ marginBottom: "1%" }}>
             <Paper
               style={{
                 padding: "5%",
@@ -209,7 +208,7 @@ const Student = () => {
                 <AssignmentIcon fontSize="large" />
               </Box>
               <Typography variant="h6" gutterBottom>
-                <b>Progress Tracking</b>
+                <b>Track Progress</b>
               </Typography>
               {/* <CircularProgress variant="determinate" value={75}  /> */}
               <Box sx={{ position: "relative", display: "inline-flex" }}>
@@ -250,7 +249,7 @@ const Student = () => {
           {/* <Grid item xs={12} sm={6}>
         </Grid> */}
           {/* Weekly Reports */}
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={4}>
             <Paper
               //className={classes.paper}
               style={{
@@ -284,9 +283,9 @@ const Student = () => {
         </Grid>
         <Grid item xs={12}>
           <Paper>
-            <Typography variant="h6" gutterBottom>
+            {/* <Typography variant="h6" gutterBottom>
               Task List
-            </Typography>
+            </Typography> */}
             {tasks.length === 0 ? (
               <CircularProgress />
             ) : (

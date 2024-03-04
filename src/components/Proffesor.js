@@ -20,13 +20,14 @@ import {
   Chip,
   Paper,
   IconButton,
+  Tooltip,
 } from "@mui/material";
 import Swal from "sweetalert2";
 import CloseIcon from "@mui/icons-material/Close";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { CheckCircleOutline, CancelOutlined } from "@mui/icons-material";
+import { CheckCircleOutline, CancelOutlined ,Edit, Troubleshoot} from "@mui/icons-material";
 
 function Proffesor(props) {
   const [openModal, setOpenModal] = useState(false);
@@ -36,6 +37,7 @@ function Proffesor(props) {
   const [priority, setPriority] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [editTask, setEditTask] = useState(null);
   const [attachmentFile, setAttachmentFile] = useState("");
   const [feedback, setFeedback] = useState("");
   const [tasks, setTasks] = useState([
@@ -66,8 +68,14 @@ function Proffesor(props) {
     setOpenModal(true);
   };
 
+  const handleEditTask = (task) => {
+    setEditTask(true);
+    setOpenModal(true);
+  };
+
   const handleCloseModal = () => {
     setOpenModal(false);
+    setEditTask(false)
   };
 
   const handleClosereportModal = () => {
@@ -92,10 +100,11 @@ function Proffesor(props) {
     // Close modal
     setOpenModal(false);
     Swal.fire({
-      title: "Task created and Assigned Successfully!",
+      title: editTask ? "Task Updated Successfully!" :"Task created and Assigned Successfully!",
       // text: "Report Uploaded Succesfully!",
       icon: "success",
     });
+    setEditTask(false)
   };
 
   const handleViewAttachment = (attachment) => {
@@ -109,11 +118,8 @@ function Proffesor(props) {
         elevation={3}
         sx={{
           p: 2,
-          mb: 4,
-          width: "15%",
-          position: "absolute",
-          top: 10,
-          left: 5,
+          mb: 3,
+          width: "35%",
           backgroundColor: "#ffffff",
           backgroundImage: "linear-gradient(315deg, #ffffff 0%, #335c81 74%)",
         }}
@@ -155,24 +161,41 @@ function Proffesor(props) {
             sx={{ bgcolor: "background.paper", padding: 3, borderRadius: 2 }}
           >
             <Typography variant="h6" gutterBottom>
-              Create Task
+            {editTask ? "Edit Task" : "Create Task"}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id="student-label">Select Student</InputLabel>
-                  <Select
-                    labelId="student-label"
-                    value={selectedStudent}
-                    onChange={(e) => setSelectedStudent(e.target.value)}
-                    fullWidth
-                  >
-                    {/* Replace the options below with actual student names */}
-                    <MenuItem value="student1">Student 1</MenuItem>
-                    <MenuItem value="student2">Student 2</MenuItem>
-                    <MenuItem value="student3">Student 3</MenuItem>
-                  </Select>
-                </FormControl>
+                <Box>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      select Student
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Select Student"
+                      value={selectedStudent}
+                      onChange={(e) => setSelectedStudent(e.target.value)}
+                      fullWidth
+                      inputProps={{
+                        placeholder: "", // Remove the placeholder text
+                      }}
+                      MenuProps={{
+                        PaperProps: {
+                          style: {
+                            maxHeight: 224,
+                            width: 250,
+                          },
+                        },
+                      }}
+                    >
+                      {/* Replace the options below with actual student names */}
+                      <MenuItem value="student1">Student 1</MenuItem>
+                      <MenuItem value="student2">Student 2</MenuItem>
+                      <MenuItem value="student3">Student 3</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -188,8 +211,15 @@ function Proffesor(props) {
                   <Select
                     labelId="priority-label"
                     value={priority}
+                    label="Priority"
                     onChange={(e) => setPriority(e.target.value)}
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    inputProps={{
+                      placeholder: "", // Remove the placeholder text
+                    }}
                   >
                     <MenuItem value="High">High</MenuItem>
                     <MenuItem value="Medium">Medium</MenuItem>
@@ -204,6 +234,12 @@ function Proffesor(props) {
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
                   fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    placeholder: "", // Remove the placeholder text
+                  }}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -213,12 +249,18 @@ function Proffesor(props) {
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
                   fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    placeholder: "", // Remove the placeholder text
+                  }}
                 />
               </Grid>
             </Grid>
             <Box sx={{ textAlign: "right", mt: 2 }}>
               <Button variant="contained" onClick={handleAssignTask}>
-                Assign Task
+              {editTask ? "Update Task" : "Assign Task"}
               </Button>
             </Box>
           </Box>
@@ -254,6 +296,9 @@ function Proffesor(props) {
               </TableCell>
               <TableCell>
                 <b>Feedback</b>
+              </TableCell>
+              <TableCell>
+                <b>Actions</b>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -300,15 +345,27 @@ function Proffesor(props) {
                     <CancelOutlined color="error" />
                   )}
                 </TableCell>
+                <TableCell>
+                  <Tooltip title="Edit Task">
+                    <IconButton onClick={() => handleEditTask(task)}>
+                      <Edit />
+                    </IconButton>
+                  </Tooltip>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
       <Modal open={openreportModal} onClose={handleClosereportModal}>
-        <Container maxWidth="sm" sx={{ mt: 4 }}>
+        <Container maxWidth="sm" sx={{ mt: 1 }}>
           <Box
-            sx={{ bgcolor: "background.paper", padding: 3, borderRadius: 2 ,position:"relative"}}
+            sx={{
+              bgcolor: "background.paper",
+              padding: 3,
+              borderRadius: 2,
+              position: "relative",
+            }}
           >
             <Box sx={{ position: "absolute", top: 0, right: 0 }}>
               <IconButton onClick={handleClosereportModal}>
@@ -321,7 +378,7 @@ function Proffesor(props) {
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <iframe
                 src={attachmentFile}
-                style={{ width: "80%", height: "500px" }}
+                style={{ width: "80%", height: "380px" }}
               />
             </Box>
             <TextField

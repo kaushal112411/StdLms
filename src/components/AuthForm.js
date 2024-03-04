@@ -9,7 +9,10 @@ const theme = createTheme();
 
 const AuthForm = (props) => {
   const [email, setEmail] = useState('');
+  const [name,setName] = useState('')
   const [password, setPassword] = useState('');
+  const [contactDetails, setContactDetails] = useState('');
+  const [graduationDate, setGraduationDate] = useState('');
   const [role, setRole] = useState('');
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
   const [showLoginForm, setShowLoginForm] = useState(true);
@@ -156,6 +159,19 @@ const handleLogin = () => {
               Register
             </Typography>
             <form>
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="Name"
+                label="Name"
+                name="Name"
+                autoComplete="Name"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -182,6 +198,38 @@ const handleLogin = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+                            <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="contactDetails"
+                  label="Contact Details (Mobile Number)"
+                  name="contactDetails"
+                  autoComplete="contactDetails"
+                  value={contactDetails}
+                  onChange={(e) => setContactDetails(e.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="graduationDate"
+                  label="Graduation Date"
+                  name="graduationDate"
+                  type="date"
+                  autoComplete="graduationDate"
+                  value={graduationDate}
+                  onChange={(e) => setGraduationDate(e.target.value)}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    placeholder: "", // Remove the placeholder text
+                  }}
+                />
+           
                        <FormControl fullWidth variant="outlined" margin="normal" required>
                   <InputLabel id="role-label">Role</InputLabel>
                   <Select
@@ -191,11 +239,8 @@ const handleLogin = () => {
                     onChange={(e) => setRole(e.target.value)}
                     label="Role"
                   >
-                    <MenuItem value="student">Student</MenuItem>
-                    <MenuItem value="instructor">Instructor</MenuItem>
-                    <MenuItem value="administrator">Administrator</MenuItem>
-                    <MenuItem value="quality_assurance_officer">Quality Assurance Officer</MenuItem>
-                    <MenuItem value="program_coordinator">Program Coordinator</MenuItem>
+                    <MenuItem value="student">Graduate</MenuItem>
+                    <MenuItem value="instructor">Proffesor</MenuItem>
                   </Select>
                 </FormControl>
               <Button

@@ -9,13 +9,16 @@ import './index.css';
 import Student from './components/Student';
 import Proffesor from './components/Proffesor';
 import Aboutus from './components/Aboutus';
+import Home from './components/Home';
 const theme = createTheme();
 
 const App = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [showAboutus, setShowAboutus] = useState(false);
   const [login,setLogin] = useState(false)
+  const [home,setHome] = useState(true)
   const [proflogin,setProflogin] = useState(false)
+  const [showhome,setShowHome] = useState(false)
   const handleContactButtonClick = () => {
     if(login){
       setLogin(false)
@@ -40,11 +43,34 @@ const App = () => {
     }
   };
 
+  const handleHomeclick =()=>{
+    // if(login){
+    //   setLogin(false)
+    //
+    setLogin(false)
+    setHome((prev) => !prev);
+  }
+
   return (
     <ThemeProvider theme={theme}>
+      { !home ? <>
       <Grid container justifyContent="flex-end" sx={{ padding: '10px' }}>
         <Grid item >
+          { !login &&
+               <Button
+               variant="contained"
+               color="primary"
+               //style={{backgroundColor:"#FF5349"}}
+               onClick={handleHomeclick}
+               //sx={{ margin: '10px' }}
+               className="contact-button"
+               style={{marginRight:"10px"}}
+              >
+               Home
+             </Button>
+          }
           { !login && !showAboutus && !showContactForm &&
+         <>
         <Button
             variant="contained"
             color="primary"
@@ -56,6 +82,7 @@ const App = () => {
           >
             Aboutus
           </Button>
+          </>
           }
           <Button
             variant="contained"
@@ -69,10 +96,11 @@ const App = () => {
           </Button>
         </Grid>
       </Grid>
-      
+      {!login &&
       <div className="form-container">
       {showContactForm && !login ? <ContactForm /> : showAboutus && !login ? <Aboutus /> : !login && <AuthForm login={login} setLogin={setLogin} setProflogin={setProflogin}/>}
       </div>
+      }
        
       <div>
         {login && proflogin? <Proffesor/>: login && <Student/> }
@@ -80,7 +108,20 @@ const App = () => {
       <div>
         {/* {showAboutus && <Aboutus/>} */}
       </div>
+      </>
+       :
+      <div>
+      <Home setHome={setHome} 
+      setShowAboutus={setShowAboutus}
+      setShowContactForm={setShowContactForm}
+      handleAboutusClick={handleAboutusClick}
+      handleContactButtonClick ={handleContactButtonClick}
+      setLogin={setLogin}
+      />
+    </div>
+}
     </ThemeProvider>
+  
   );
 };
 
