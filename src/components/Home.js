@@ -39,7 +39,7 @@ const Home = (props) => {
       </AppBar>
       <div className="content" style={{ padding: "20px", textAlign: "center", flex: "1 0 auto" }}>
         <Typography variant="h4" gutterBottom>
-          Welcome to the Task Management System for Professors!
+          Welcome to the Task Management System for Graduates and Professors!
         </Typography>
         <Typography variant="body1">
           Our application
@@ -91,7 +91,7 @@ const Home = (props) => {
         }}
         />} />
           <BottomNavigationAction label="Blog" style={{color:"white"}} icon={
-         <a href="https://student146.wordpress.com/2024/03/05/7/" style={{ textDecoration: "none", color: "#fff" }}>
+         <a href="https://student146.wordpress.com/2024/03/05/7/" target="_blank" style={{ textDecoration: "none", color: "#fff" }}>
           <LanguageIcon />
           </a>
           } />
