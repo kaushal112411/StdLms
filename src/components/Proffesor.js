@@ -358,13 +358,16 @@ function Proffesor(props) {
         </Table>
       </TableContainer>
       <Modal open={openreportModal} onClose={handleClosereportModal}>
-        <Container maxWidth="sm" sx={{ mt: 1 }}>
+        <Container maxWidth="sm" sx={{ mt: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Box
             sx={{
               bgcolor: "background.paper",
               padding: 3,
               borderRadius: 2,
+              maxHeight: "90vh", // Adjust the maximum height as needed
+              overflowY: "auto", // Make the modal scrollable if content exceeds the height
               position: "relative",
+              width:"90%"
             }}
           >
             <Box sx={{ position: "absolute", top: 0, right: 0 }}>
