@@ -9,6 +9,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import LanguageIcon from '@mui/icons-material/Language'; 
 import image from "../icontop.jpeg";
 import image1 from "../image1.png"
 import image2 from "../image2.png"
@@ -89,7 +90,14 @@ const Home = (props) => {
             props.setHome(false)
         }}
         />} />
+          <BottomNavigationAction label="Blog" style={{color:"white"}} icon={
+         <a href="https://student146.wordpress.com/2024/03/05/7/" style={{ textDecoration: "none", color: "#fff" }}>
+          <LanguageIcon />
+          </a>
+          } />
+        
       </BottomNavigation>
+     
     </div>
   );
 };
