@@ -364,7 +364,7 @@ function Proffesor(props) {
               bgcolor: "background.paper",
               padding: 3,
               borderRadius: 2,
-              maxHeight: "90vh", // Adjust the maximum height as needed
+              maxHeight: "60vh", // Adjust the maximum height as needed
               overflowY: "auto", // Make the modal scrollable if content exceeds the height
               position: "relative",
               width:"90%"
