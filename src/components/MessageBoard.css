@@ -1,0 +1,43 @@
+.message-board {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .message-user {
+    background-color: #1976d2;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #ccc;
+  }
+  
+  .own-message-container {
+    text-align: right;
+  }
+  
+  .other-message-container {
+    text-align: left;
+  }
+  
+  .own-message {
+    background-color: #cfd1ea; /* Light green for own messages */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  
+  .other-message {
+    background-color: #eff2f2; /* Light blue for other messages */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .message-container {
+    max-height: 500px; /* Set the maximum height of the message container */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  

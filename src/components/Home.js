@@ -13,8 +13,15 @@ import LanguageIcon from '@mui/icons-material/Language';
 import image from "../icontop.jpeg";
 import image1 from "../image1.png"
 import image2 from "../image2.png"
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Routes,
+} from "react-router-dom"; // Importing Router components
+import { useNavigate } from "react-router-dom"
 const Home = (props) => {
+  // const navigate = useNavigate()
   return (
     <div className="container" style={{margin:"1%",marginTop:"1%",}}>
       <AppBar position="static" sx={{ backgroundColor: "#3f51b5",height:90,borderRadius:"15px" }}>
@@ -31,6 +38,7 @@ const Home = (props) => {
             color="inherit"
             onClick={() => {
               props.setHome(false);
+              // navigate('/auth')
             }}
           >
             Sign In
@@ -98,7 +106,7 @@ const Home = (props) => {
         }}
         />} />
           <BottomNavigationAction label="Blog" style={{color:"white"}} icon={
-         <a href="https://student146.wordpress.com/2024/03/05/7/" target="_blank" style={{ textDecoration: "none", color: "#fff" }}>
+         <a href="https://student2036.wordpress.com/2024/03/05/title-streamlining-education-a-web-application-for-task-management-and-collaboration/" target="_blank" style={{ textDecoration: "none", color: "#fff" }}>
           <LanguageIcon />
           </a>
           } />
